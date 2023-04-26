@@ -155,3 +155,13 @@ ul li span{
   text-align: center;
 }
 
+
+
+/* Fechas */
+  #fecha_actual {
+    display: flex;
+    justify-content: center;
+    font-weight: lighter;
+    color:#ffffff;
+    font-size: 17px;
+  }
