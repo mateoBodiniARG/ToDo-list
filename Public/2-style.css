@@ -26,7 +26,7 @@ h1{
 
 .todo-app {
   width: 100%;
-  max-width: 630px;
+  max-width: 830px;
   background-color: #374151;
   margin: 70px auto 20px;
   padding: 50px 30px 70px;
@@ -101,10 +101,11 @@ button:hover span:after {
 
 
 /* LIST CONTENT */
+
 ul li{
   list-style: none;
   font-size: 17px;
-  padding: 12px 8px 12px 50px;
+  padding: 14px 8px 14px 50px;
   user-select: none;
   cursor: pointer;
   background-color: #111827;
@@ -136,7 +137,7 @@ ul li.checked{
 ul li.checked::before{
   background-image: url(checked.png);
   background-color: #0d153a;
-  opacity: .4;
+  opacity: .5;
 }
 
 li:hover{
@@ -155,13 +156,21 @@ ul li span{
   text-align: center;
 }
 
-
-
+.p-taskPending{
+  display: none;
+}
+#p-taskPendingID{
+  text-align: center;
+  color: #b6b6b6;
+  font-weight: 500;
+}
 /* Fechas */
   #fecha_actual {
-    display: flex;
-    justify-content: center;
+    margin-top: 20px;
+    text-align: center;
     font-weight: lighter;
     color:#ffffff;
     font-size: 17px;
   }
+
+
