@@ -5,19 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="2-style.css" />
-    <link rel="shortcut icon" href="FavIcon.png" type="image/x-icon">
     <script src="scrollreveal.js"></script>
+    <link rel="shortcut icon" href="FavIcon.png" type="image/x-icon">
     <title>ToDo App</title>
   </head>
   <body>
     <main class="container">
       
-      <h1 class="title">&#128075 Welcome</h1>
+      <h1 class="title"><span id="h1Title">  Welcome </span></h1>
       <div id="fecha_actual"></div>
-      <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+      <div id="filterAll">
+        <Select id="selectFilter" >
+          <div id="filter">
+            <option value="All">All</option>
+            <option value="Complete">Complete</option>
+            <option value="Incomplete">Incomplete</option>
+          </div>
+        </Select>
+      </div>
 
       <div class="todo-app">
-
         <div class="row">
           <input type="text" id="inputTask" maxlength="43" placeholder="Add your task..." />
           <button id="btnAdd">

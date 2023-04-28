@@ -174,3 +174,41 @@ ul li span{
   }
 
 
+/* FILTER */
+
+#selectFilter{
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 150px;
+  margin-top: 30px;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  background-color: #374151;
+  color: #fff;
+  cursor: pointer;
+  transition: all 300ms;
+}
+
+#filterAll {
+  display: flex;
+  justify-content: center
+}
+
+
+#h1Title {
+  background: linear-gradient(to right, #ff0000, #0000ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient .3s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position-x: 0%;
+  }
+  100% {
+    background-position-x: 100%;
+  }
+}
+

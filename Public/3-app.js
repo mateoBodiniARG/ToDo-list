@@ -3,51 +3,55 @@ const btnAdd = document.getElementById("btnAdd");
 const taskList = document.getElementById("list-content");
 const MAX_TASKS = 9;
 const savedTasks = loadTasksFromStorage();
-const date = document.getElementById("fecha_actual")
-const pendingTaskMessage = document.getElementById('p-taskPendingID')
-
+const date = document.getElementById("fecha_actual");
+const pendingTaskMessage = document.getElementById("p-taskPendingID");
+const selectFilter = document.getElementById("selectFilter");
 
 // Inicializa ScrollReveal
 ScrollReveal();
 
 // Configura la animación
-ScrollReveal().reveal('#pAnimation', { 
+ScrollReveal().reveal("#pAnimation", {
   delay: 700,
   duration: 1000,
-  distance: '40px',
-  origin: 'top'
+  distance: "40px",
+  origin: "top",
 });
 
-ScrollReveal().reveal('.todo-app', { 
+ScrollReveal().reveal(".todo-app", {
   delay: 300,
   duration: 1000,
-  distance: '70px',
-  origin: 'bottom'
+  distance: "70px",
+  origin: "bottom",
 });
 
-ScrollReveal().reveal('.title', { 
-  delay: 100,
+ScrollReveal().reveal(".title", {
+  delay: 300,
   duration: 1000,
-  distance: '-40px',
-  origin: 'top'
+  distance: "-40px",
+  origin: "top",
+  distance: '250%',
 });
 
-ScrollReveal().reveal('#fecha_actual', { 
+ScrollReveal().reveal("#fecha_actual", {
   delay: 800,
   duration: 1000,
-  distance: '40px',
-  origin: 'top'
+  distance: "40px",
+  origin: "top",
 });
-ScrollReveal().reveal('#list-content', { 
+ScrollReveal().reveal("#list-content", {
   delay: 400,
   duration: 1000,
-  distance: '40px',
-  origin: 'rigth'
+  distance: "40px",
+  distance: '250%',
+  origin: "rigth",
 });
-
-
-
-
+ScrollReveal().reveal("#filterAll", {
+  delay: 1200,
+  duration: 1500,
+  distance: "50px",
+  origin: "left",
+});
 
 // Carga las tareas desde localStorage
 function loadTasksFromStorage() {
@@ -56,13 +60,31 @@ function loadTasksFromStorage() {
 
 // Guarda las tareas en localStorage
 function saveTasksToStorage() {
-  const tasks = Array.from(taskList.children).map(task => ({
+  const tasks = Array.from(taskList.children).map((task) => ({
     description: task.textContent.replace("×", "").trim(),
-    completed: task.classList.contains("checked")
+    completed: task.classList.contains("checked"),
   }));
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
+// COMPLETE -- INCOMPLETE -- ALL
+selectFilter.addEventListener("change", FilterChange)
+
+function FilterChange() {
+  const filterValue = selectFilter.value;
+
+  Array.from(taskList.children).forEach(task => {
+    if (filterValue === "All") {
+      task.style.display = "block";
+    } else if (filterValue === "Complete" && task.classList.contains("checked")) {
+      task.style.display = "block";
+    } else if (filterValue === "Incomplete" && !task.classList.contains("checked")) {
+      task.style.display = "block";
+    } else {
+      task.style.display = "none";
+    }
+  });
+}
 
 
 // Agrega una tarea a la lista
@@ -78,13 +100,19 @@ function addTask() {
     alert("Ya ha agregado el número máximo de tareas permitido!"); // Maximo de tareas = 9
     return;
   }
-  
+
+  const tasks = Array.from(taskList.children);
+  const taskAlreadyExists = tasks.some((task) => task.textContent.trim() === newTaskDescription);
+
+  if (taskAlreadyExists) {
+    alert("Esta tarea ya existe en la lista!");
+    return;
+  }
 
   const newTask = createTaskElement(newTaskDescription);
   taskList.appendChild(newTask);
   input.value = "";
 
-  
   checkPendingTask(); // llama a la función para actualizar el mensaje de tareas pendientes
   saveTasksToStorage();
 }
@@ -92,12 +120,11 @@ function addTask() {
 // Revisa si hay tareas pendientes y actualiza el mensaje
 function checkPendingTask() {
   if (taskList.children.length === 0) {
-    pendingTaskMessage.classList.remove('p-taskPending')
+    pendingTaskMessage.classList.remove("p-taskPending");
   } else {
-    pendingTaskMessage.classList.add('p-taskPending')
+    pendingTaskMessage.classList.add("p-taskPending");
   }
 }
-
 
 // Crea un elemento de tarea
 function createTaskElement(description) {
@@ -127,7 +154,6 @@ function handleTaskClick(event) {
   }
 
   checkPendingTask(); // llama a la función para actualizar el mensaje de tareas pendientes
-
 }
 
 // Manejador de eventos para agregar tarea
@@ -142,7 +168,7 @@ btnAdd.addEventListener("click", handleAddTask);
 input.addEventListener("keydown", handleAddTask);
 
 // Carga las tareas iniciales
-savedTasks.forEach(task => {
+savedTasks.forEach((task) => {
   const newTask = createTaskElement(task.description);
   if (task.completed) {
     newTask.classList.add("checked");
@@ -160,10 +186,8 @@ const fecha = new Date();
 
 // Obtener el día, mes y año
 const dia = fecha.getDate();
-const mes = fecha.toLocaleString('en-EN', { month: 'long' });
+const mes = fecha.toLocaleString("en-EN", { month: "long" });
 const anio = fecha.getFullYear();
-const diaSemana = fecha.toLocaleDateString('en-EN', { weekday: 'long' });
+const diaSemana = fecha.toLocaleDateString("en-EN", { weekday: "long" });
 
 date.innerHTML = ` Today is ${diaSemana} ${dia} of ${mes} of the year ${anio}`;
-
-
