@@ -6,16 +6,15 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-main {
+body{
+   background-image: url(gradient\ image.png);
+  background-position: center;
+  background-size: 70%; 
   width: 100vw;
   height: 100vh;
   background-color: #16161a;
-  padding: 10px;
-  background-image: url(gradient\ image.png);
-  background-repeat: repeat;
-  background-position: center;
-  background-size: 70%;
 }
+
 
 h1{
   display: grid;
@@ -201,14 +200,5 @@ ul li span{
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradient .3s ease infinite;
-}
-
-@keyframes gradient {
-  0% {
-    background-position-x: 0%;
-  }
-  100% {
-    background-position-x: 100%;
-  }
 }
 

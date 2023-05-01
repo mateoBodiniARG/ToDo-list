@@ -1,7 +1,7 @@
 const input = document.getElementById("inputTask");
 const btnAdd = document.getElementById("btnAdd");
 const taskList = document.getElementById("list-content");
-const MAX_TASKS = 9;
+const MAX_TASKS = 10;
 const savedTasks = loadTasksFromStorage();
 const date = document.getElementById("fecha_actual");
 const pendingTaskMessage = document.getElementById("p-taskPendingID");
@@ -40,11 +40,10 @@ ScrollReveal().reveal("#fecha_actual", {
   origin: "top",
 });
 ScrollReveal().reveal("#list-content", {
-  delay: 400,
+  delay: 500,
   duration: 1000,
-  distance: "40px",
-  distance: '250%',
-  origin: "rigth",
+  distance: "50px",
+  origin: "bottom",
 });
 ScrollReveal().reveal("#filterAll", {
   delay: 1200,
