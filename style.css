@@ -61,7 +61,6 @@ h1{
 
 
 button {
-  display: inline-block;
   border-radius: 15px;
   background-color: #111827;
   border: none;
@@ -75,8 +74,6 @@ button {
 }
 
 button span {
-  cursor: pointer;
-  display: inline-block;
   position: relative;
   transition: 0.5s;
 }
@@ -201,6 +198,24 @@ ul li span{
   background: linear-gradient(to right, #ff0000, #0000ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient .3s ease infinite;
 }
 
+@media (max-width: 480px){
+  .todo-app{
+    max-width: 95%;
+  }
+  body{
+    overflow-x: hidden;
+  }
+
+  button span:after {
+    content: none;
+    opacity: 0;
+    top: 0;
+    transition: 0.3s;
+  }
+  
+  button:hover span {
+    padding-right: 10px;
+  }
+}
