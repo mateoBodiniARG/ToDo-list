@@ -212,10 +212,9 @@ ul li span{
     content: none;
     opacity: 0;
     top: 0;
-    transition: 0.3s;
   }
   
   button:hover span {
-    padding-right: 10px;
+    padding-right: 0px;
   }
 }
