@@ -18,7 +18,7 @@ ScrollReveal().reveal("#pAnimation", {
   origin: "top",
 });
 
-ScrollReveal().reveal(".todo-app", {
+ScrollReveal().reveal(".todo-app", { //Revisar -- error al cargar
   delay: 300,
   duration: 1000,
   distance: "70px",
@@ -52,12 +52,12 @@ ScrollReveal().reveal("#filterAll", {
   origin: "left",
 });
 
-// Carga las tareas desde localStorage
+// Cargar las tareas desde localStorage
 function loadTasksFromStorage() {
   return JSON.parse(localStorage.getItem("tasks")) || [];
 }
 
-// Guarda las tareas en localStorage
+// Guardar las tareas en localStorage
 function saveTasksToStorage() {
   const tasks = Array.from(taskList.children).map((task) => ({
     description: task.textContent.replace("×", "").trim(),
@@ -86,17 +86,17 @@ function FilterChange() {
 }
 
 
-// Agrega una tarea a la lista
+// Agregar una tarea a la lista
 function addTask() {
   const newTaskDescription = input.value.trim();
 
   if (newTaskDescription === "") {
-    alert("Debe ingresar una tarea!"); // No puede haber campo vacio
+    alert("Debe ingresar una tarea!"); 
     return;
   }
 
-  if (taskList.children.length >= MAX_TASKS) {
-    alert("Ya ha agregado el número máximo de tareas permitido!"); // Maximo de tareas = 9
+  if (taskList.children.length >= MAX_TASKS) { // max tareas, cambiar desde inicio
+    alert("Ya ha agregado el número máximo de tareas permitido!"); 
     return;
   }
 
@@ -112,11 +112,11 @@ function addTask() {
   taskList.appendChild(newTask);
   input.value = "";
 
-  checkPendingTask(); // llama a la función para actualizar el mensaje de tareas pendientes
+  checkPendingTask(); 
   saveTasksToStorage();
 }
 
-// Revisa si hay tareas pendientes y actualiza el mensaje
+// Revisar si hay tareas pendientes y actualiza el mensaje
 function checkPendingTask() {
   if (taskList.children.length === 0) {
     pendingTaskMessage.classList.remove("p-taskPending");
@@ -125,7 +125,7 @@ function checkPendingTask() {
   }
 }
 
-// Crea un elemento de tarea
+// Crear un elemento de tarea
 function createTaskElement(description) {
   const newTask = document.createElement("li");
   const newSpan = document.createElement("span");
@@ -152,7 +152,7 @@ function handleTaskClick(event) {
     saveTasksToStorage();
   }
 
-  checkPendingTask(); // llama a la función para actualizar el mensaje de tareas pendientes
+  checkPendingTask();
 }
 
 // Manejador de eventos para agregar tarea
@@ -162,11 +162,11 @@ function handleAddTask(event) {
   }
 }
 
-// Configura los manejadores de eventos
+// Configurar los manejadores de eventos
 btnAdd.addEventListener("click", handleAddTask);
 input.addEventListener("keydown", handleAddTask);
 
-// Carga las tareas iniciales
+// Cargar las tareas iniciales
 savedTasks.forEach((task) => {
   const newTask = createTaskElement(task.description);
   if (task.completed) {
@@ -175,12 +175,13 @@ savedTasks.forEach((task) => {
   taskList.appendChild(newTask);
 });
 
-// Llama a la función para actualizar el mensaje de tareas pendientes después de cargar las tareas
+// Llamar a la función para actualizar el mensaje de tareas pendientes después de cargar las tareas
 checkPendingTask();
 
-// Fechaf
 
 // Fecha
+
+//Revisar
 const fecha = new Date();
 
 // Obtener el día, mes y año

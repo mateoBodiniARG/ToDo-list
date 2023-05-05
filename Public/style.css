@@ -7,14 +7,14 @@
   font-family: 'Poppins', sans-serif;
 }
 body{
-  background-image: url(gradient\ image.png);
+  background-image: url(./imgs/gradient\ image.png);
   background-position: center;
   background-size: 70%; 
   width: 100vw;
   height: 100vh;
   background-color: #16161a;
-  /* overflow-y: hidden; */
   overflow-x: hidden;
+  background-attachment: fixed;
 }
 
 
@@ -115,7 +115,7 @@ ul li::before{
   height: 28px;
   width: 28px;
   border-radius: 50%;
-  background-image: url(unchecked.png);
+  background-image: url(./imgs/unchecked.png);
   background-size: cover;
   background-position: center;
   top: 12px;
@@ -128,7 +128,7 @@ ul li.checked{
 }
 
 ul li.checked::before{
-  background-image: url(checked.png);
+  background-image: url(./imgs/checked.png);
   background-color: #0d153a;
   opacity: .5;
 }
@@ -209,13 +209,13 @@ ul li span{
     top: 0;
   }
   
+  button:hover span {
+    padding-right: 0px;
+  }
   button{
     width: 160px;
   }
 
-  button:hover span {
-    padding-right: 0px;
-  }
   #inputTask {
     max-width: 60%;
   }
