@@ -47,7 +47,7 @@ h1{
 }
 
 #inputTask {
-  flex: 1;
+  flex: auto;
   border: none;
   outline: none;
   background: transparent;
