@@ -209,7 +209,15 @@ ul li span{
     top: 0;
   }
   
+  button{
+    width: 120px;
+  }
+
   button:hover span {
     padding-right: 0px;
   }
+  #inputTask {
+    max-width: 60%;
+  }
 }
+
