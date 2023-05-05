@@ -42,7 +42,6 @@ h1{
   justify-content: space-between;
   background: #edeef0;
   border-radius: 1rem;
-  padding-left: 20px;
   margin-bottom: 25px;
 }
 
@@ -74,16 +73,12 @@ button {
 }
 
 button span {
-  position: relative;
   transition: 0.5s;
 }
 
 button span:after {
   content: "+";
-  position: absolute;
   opacity: 0;
-  top: 0;
-  right: -15px;
   transition: 0.3s;
 }
 
